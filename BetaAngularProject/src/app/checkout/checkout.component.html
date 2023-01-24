@@ -1,0 +1,78 @@
+<div class="
+main_container">
+    <div class="title_container mat-elevation-z2">
+        <div class="title">
+            <h2>Check Out</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="address_container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                    <mat-label>Input</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+
+
+            </div>
+        </div>
+        <div class="col-6">
+
+            <div class="cartitems_container">
+                <div class="ordersummary">
+                    Order Summary
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">MRP</th>
+                            <th scope="col">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of bookdata">
+                            <td>{{book.book.title}}</td>
+                            <td>{{book.quantity}}</td>
+                            <td>{{book.book.price | currency : "INR"}} </td>
+                            <td>{{book.quantity * book.book.price
+                                | currency :
+                                "INR" }}</td>
+
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Grand Total</td>
+                            <td>{{sum | currency : 'INR'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
