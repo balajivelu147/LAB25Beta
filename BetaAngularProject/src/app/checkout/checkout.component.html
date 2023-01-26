@@ -8,70 +8,115 @@ main_container">
     <div class="row">
         <div class="col-6">
             <div class="address_container">
-                <mat-form-field appearance="fill">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <br>
-                <mat-form-field appearance="fill">
-                    <mat-label>Input</mat-label>
-                    <input matInput>
-                </mat-form-field>
+                <form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+                    <mat-card class="mat-card mat-focus-indicator mat-elevation-z4">
+                        <mat-card-title class="mat-card-title">Shipping Address</mat-card-title>
+                        <mat-divider _ngcontent-qst-c140="" role="separator" class="mat-divider mat-divider-horizontal"
+                            aria-orientation="horizontal"></mat-divider>
+                        <mat-form-field class="input_style">
+                            <mat-label>Name*</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="!formgroup.controls.name?.valid && formgroup.controls.name.touched">
+                                Name is required
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input_style">
+                            <mat-label>Address Line 1 *</mat-label>
+                            <input matInput formControlName="address1">
+                            <mat-error
+                                *ngIf="!formgroup.controls.address1?.valid && formgroup.controls.address1.touched">
+                                Address is required
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input_style">
+                            <mat-label>Address Line 2 *</mat-label>
+                            <input matInput formControlName="address2">
+                            <mat-error
+                                *ngIf="!formgroup.controls.address2?.valid && formgroup.controls.address2.touched">
+                                Address is required
+                            </mat-error>
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input_style">
+                            <mat-label>Pincode *</mat-label>
+                            <input matInput formControlName="pincode">
+                            <mat-error
+                                *ngIf="!formgroup.controls.pincode?.errors?.valid && formgroup.controls.pincode.touched">
+                                <mat-error *ngIf="formgroup.controls.pincode.errors?.required ">
+                                    Pincode is required
+                                </mat-error>
+
+                                <mat-error
+                                    *ngIf="formgroup.controls.pincode.errors?.['minlength']  || formgroup.controls.pincode.errors?.['maxlength']">
+                                    Pincode should be 6 digits
+                                </mat-error>
 
 
+                            </mat-error>
 
+
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="input_style">
+                            <mat-label>State *</mat-label>
+                            <input matInput formControlName="state">
+                            <mat-error *ngIf="!formgroup.controls.state?.valid && formgroup.controls.state.touched">
+                                State is required
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-card-actions class="mat-card-actions">
+
+                            <button type="submit" color="primary" mat-raised-button mat-primary>Place Order</button>
+                            <button type="button" color="warn" mat-raised-button mat-warn>
+                                CANCEL</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </form>
             </div>
         </div>
         <div class="col-6">
 
             <div class="cartitems_container">
-                <div class="ordersummary">
-                    Order Summary
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">MRP</th>
-                            <th scope="col">TOTAL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let book of bookdata">
-                            <td>{{book.book.title}}</td>
-                            <td>{{book.quantity}}</td>
-                            <td>{{book.book.price | currency : "INR"}} </td>
-                            <td>{{book.quantity * book.book.price
-                                | currency :
-                                "INR" }}</td>
+                <mat-card class="mat-card mat-focus-indicator mat-elevation-z4">
+
+                    <mat-card-title> Order Summary </mat-card-title>
+                    <mat-card-content class="mat-card-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">MRP</th>
+                                    <th scope="col">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let book of bookdata">
+                                    <td><a
+                                            href="{{'https://bookcart.azurewebsites.net/books/details/' + book.book.bookId}}">{{book.book.title}}</a>
+                                    </td>
+                                    <td>{{book.quantity}}</td>
+                                    <td>{{book.book.price | currency : "INR"}} </td>
+                                    <td>{{book.quantity * book.book.price
+                                        | currency :
+                                        "INR" }}</td>
 
 
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Grand Total</td>
-                            <td>{{sum | currency : 'INR'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Grand Total</td>
+                                    <td><strong>{{sum | currency : 'INR'}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </mat-card-content>
 
+                </mat-card>
             </div>
         </div>
     </div>

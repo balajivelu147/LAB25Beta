@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { pipe } from 'rxjs';
 import { ApicallService } from '../apicall.service';
 import { map, catchError } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -12,13 +14,26 @@ import { map, catchError } from 'rxjs/operators';
 
 export class CheckoutComponent implements OnInit {
 
-  constructor(private apicall: ApicallService) {
+  constructor(private apicall: ApicallService, private router: Router) {
 
   }
   bookdata: any;
   book: any = [];
   sum: any;
+  carttotal: number = 0;
+  postdata: any;
+  bookdetailsurl = "https://bookcart.azurewebsites.net/books/details/"
+  date = new Date()
+
   n: number = 0;
+  formgroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    address1: new FormControl('', [Validators.required]),
+    address2: new FormControl('', [Validators.required]),
+    pincode: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
+    state: new FormControl('', [Validators.required])
+
+  });
 
 
   ngOnInit() {
@@ -37,18 +52,32 @@ export class CheckoutComponent implements OnInit {
       }
 
       console.log(this.sum);
+      this.carttotal = this.sum;
+      this.postdata = {
+        "orderId": "669-591007",
+        "orderDetails": this.bookdata,
+        "cartTotal": this.carttotal,
+        "orderDate": this.date
+
+
+      }
 
     });
-    //this.book.forEach(this.myfunction);
+
+
+
+  }
+
+  onSubmit() {
+    console.log(this.formgroup.value);
+    this.apicall.postCartItems(this.postdata);
+    this.router.navigate(['/orderdetails']);
+
 
   }
 
 
-  // for (let book of this.bookdata) {
-  //   console.log(book);
-
-  // }
-
 }
+
 
 
