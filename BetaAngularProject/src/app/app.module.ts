@@ -1,19 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartItemsComponent } from './cart-items/cart-items.component';
-import { MenubarComponent } from './menubar/menubar.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-
-  MatFormFieldModule
-} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 
 @NgModule({
@@ -21,27 +21,29 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     CheckoutComponent,
     CartItemsComponent,
-    MenubarComponent
+    OrderdetailsComponent,
+
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    // MatButtonModule,
     MatFormFieldModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatInputModule
-    // MatInputModule,
-    // MatRippleModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
+
   exports: [
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule,
+
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
