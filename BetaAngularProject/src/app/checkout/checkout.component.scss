@@ -1,0 +1,59 @@
+.title_container {
+    padding: 8px 20px 8px 20px;
+    width: 1110px;
+    height: 54px;
+    background-color: #ff4081;
+}
+
+.title {
+    width: 1070px;
+    height: 38px;
+    font-size: 16px;
+    color: white;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    line-height: 1.5;
+}
+
+.main_container {
+    width: 1110px;
+    height: 515px;
+}
+
+.ordersummary {
+    width: 503px;
+    height: 36px;
+    font-size: 25px;
+}
+
+.input_style {
+    font: inherit;
+    background: transparent;
+    color: currentColor;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    vertical-align: bottom;
+    text-align: inherit;
+}
+
+.mat-card {
+    padding: 16px;
+}
+
+.mat-card-actions {
+
+    text-align: right;
+}
+
+
+
+.row {
+    align-items: center;
+}
+
+h2 {
+    font-size: 40px;
+}
