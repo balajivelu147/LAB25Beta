@@ -18,13 +18,13 @@
     left: 450px;
     
 }
-.fas-img{
+.wishimg{
     position: absolute;
     left: 210px;
     top:15px;
     background-color: white;
     border: none;
-    color: gray;
+    color:rgb(47, 47, 47);
     padding:5px;
     border-radius:100%;
     cursor: pointer;
@@ -38,4 +38,24 @@
 
 a{
     text-decoration: none;
+}
+.image{
+    width:240px;
+    max-height: 350px;
+}
+.cart button{
+    z-index:3;
+    position:fixed;
+    left:1000px;
+    top:3px;
+}
+.wishlist button{
+    z-index:3;
+    position:fixed;
+    left:900px;
+    top: 3px;
+}
+
+title{
+    color: red;
 }

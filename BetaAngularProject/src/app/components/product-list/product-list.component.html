@@ -1,19 +1,35 @@
+<div class="wishlist">
+    <button style="border: none; background:none;" routerLink="/wishlist">
+        <i class="far fa-heart" style="color:white; font-size: xx-large;"></i>
+        <div style="font-size: 10px; border-radius: 100%;" class="badge bg-danger" >{{w}}</div>
+   </button> &nbsp;
+</div>
+<div class="cart">
+   <button style="border: none; background:none" routerLink="/cart">
+         <i class="fa-sharp fa-solid fa-cart-shopping "style="color: white; font-size: xx-large;"></i>
+         <div style="font-size: 10px; border-radius: 100%;" class="badge bg-danger">{{c}}</div>
+    </button> &nbsp;
+</div>
+
 <div>
     <div class="container">
         <div class="row">
 
-            <ng-container *ngFor="let item of booklist">
+            <ng-container *ngFor="let item of productList">
                 <div class="card col-md-4">
-                    <img src="https://bookcart.azurewebsites.net/Upload/8f5f8b64-794c-4dbb-b369-6cc9cc762ce0HP5.jpg" alt="coverFileName">
+                    
+                    <a href="book-details" data-toggle="tooltip" title="{{item.title}}"><img src="https://bookcart.azurewebsites.net/Upload/{{item.coverFileName}}" alt="coverFileName" class="image" (mouseover)="'{{item.title}}'"></a>
 
 
                     <a href="book-details"><h6 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">&nbsp;{{item.title}}</h6></a>
 
                     <p>&nbsp; ${{item.price}}</p>
+                    
+                    
+                    <i class="fa-solid fa-heart wishimg" (click)="addTowishlist(item)" (click)="addwishlistcolor(item)" [ngStyle]="{'color':item.color ? 'red' : 'gray' }" (click)= "callme()"></i>
 
-                    <i class="far fa-heart fas-img"></i>
+                    <button class="btn btn-primary" (click)="addTocart(item)"> <i class="fa-sharp fa-solid fa-cart-shopping" ></i> &nbsp; Add to Cart</button>
 
-                    <button class="btn btn-primary"> <i class="fa-sharp fa-solid fa-cart-shopping" (click)="addTocart(item)"></i> &nbsp; Add to Cart</button>
                     
                 </div>
             </ng-container>
@@ -22,3 +38,4 @@
     </div>
 </div>
 
+<router-outlet></router-outlet>

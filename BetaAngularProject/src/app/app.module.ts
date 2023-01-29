@@ -24,7 +24,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
