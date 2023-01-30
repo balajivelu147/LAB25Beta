@@ -14,8 +14,8 @@ import Swal from 'sweetalert2';
 export class ProductListComponent implements OnInit {
   toggle = false;
   
-public c =0;
-public w =0;
+  cartNumber:number=0;
+  wishlistNumber:number=0;
 
 
 
@@ -25,60 +25,37 @@ constructor( public api:ApiService, private cartService:CartSService){}
 ngOnInit(): void {
     this.api.getproduct().subscribe(res=>{
     this.productList =res;
-    // this.totalcount = res.length;
     this.toggle = this.toggle = res.length;
-    // this.productList=this.api.getproduct()
   })
 }
-// addTocart(item){
-//   // console.log(item);
-//   this.cartService.addtoCart(item);
-//   this.cartService.removeCartItem(item);
-//   return this.totalcount;
-// }
 
 addTocart(item: { color: boolean; }) {
- this.c++;
   console.log(item);
  Swal.fire({ text: "Book added to Cart"});
+ this.cartNumber++
 }
 
 
-addTowishlist(item:any) {
-
- 
-  // if(item ==1){
-  //  this.w++;
-  // }
-  // else{
-  //   this.w--;
-  // }
-    
-  // Swal.fire({ 
-  //   text: "Book added to wishlist"});
-
-    
-}
-// enableDisableRule(_item:number){
-//   this.toggle = !this.toggle; 
-// }
 
 addwishlistcolor(item: { color: boolean; }) {
   item.color = !item.color ;
-  console.log(item)
-}
-status = false;
 
-  callme(){
-    
-    this.status = !this.status;
+  if (item.color){
+    Swal.fire({ text: "Book Added To Wishlist"});
 
-    if(this.status){
-      Swal.fire({ text: "Book Added To Wishlist"});
-    }
-    if(!this.status){
-      Swal.fire({ text: "Book Removed From Wishlist"});
-    }
   }
+  if (!item.color){
+    Swal.fire({ text: "Book Removed From Wishlist"});
+  }
+  console.log(item)
+   
+  if (item.color){
+    this.wishlistNumber++;
 
+  }
+  if (!item.color){
+    this.wishlistNumber--;
+  }
+}
+ 
 }
