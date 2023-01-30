@@ -47,7 +47,7 @@ addwishlistcolor(item: { color: boolean; }) {
   if (!item.color){
     Swal.fire({ text: "Book Removed From Wishlist"});
   }
-  console.log(item)
+
    
   if (item.color){
     this.wishlistNumber++;
@@ -57,5 +57,9 @@ addwishlistcolor(item: { color: boolean; }) {
     this.wishlistNumber--;
   }
 }
+
+
+
+
  
 }
