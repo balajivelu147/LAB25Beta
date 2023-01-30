@@ -18,7 +18,7 @@
             <ng-container *ngFor="let item of productList">
                 <div class="card col-md-4">
                     
-                    <a href="book-details" data-toggle="tooltip" title="{{item.title}}"><img src="https://bookcart.azurewebsites.net/Upload/{{item.coverFileName}}" alt="coverFileName" class="image" (mouseover)="'{{item.title}}'"></a>
+                    <a href="book-details"  title="{{item.title}}"><img src="https://bookcart.azurewebsites.net/Upload/{{item.coverFileName}}" alt="coverFileName" class="image" (mouseover)="'{{item.title}}'"></a>
 
 
                     <a href="book-details"><h6 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">&nbsp;{{item.title}}</h6></a>

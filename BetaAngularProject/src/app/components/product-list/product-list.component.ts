@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
 
 public productList:any=[];
-constructor( public api:ApiService, private cartService:CartSService){}
+constructor( public api:ApiService ){}
 
 ngOnInit(): void {
     this.api.getproduct().subscribe(res=>{
@@ -57,9 +57,5 @@ addwishlistcolor(item: { color: boolean; }) {
     this.wishlistNumber--;
   }
 }
-
-
-
-
  
 }
